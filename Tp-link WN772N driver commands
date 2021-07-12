@@ -1,0 +1,51 @@
+tp-link TL-WN722N Monitor mode and Packet injection driver installation Guide
+
+' [+] ' This symbol means that the line is not a command its just an instruction to help you along the way.
+
+
+
+
+sudo apt update
+sudo apt upgrade
+apt-cache search linux-headers 
+
+[+] After this you have to select the top most linux headers and put it with   apt-get install [The top most linux header]
+
+apt-get install linux-headers-5.10.0-kali9-amd64
+sudo reboot
+
+sudo apt-get install build-essential 
+sudo apt-get install libelf-dev 
+sudo reboot
+
+apt update
+apt dist-upgrade
+reboot
+apt install linux-headers-$(uname -r)
+git clone https://github.com/aircrack-ng/rtl8188eus
+cd rtl8188eus
+sudo -i
+echo "blacklist r8188eu" > "/etc/modprobe.d/realtek.conf"
+exit
+sudo reboot
+sudo apt update
+cd rtl8188eus
+sudo make
+sudo make install
+
+[+] Time to test the tp link wifi adapter
+
+iwconfig
+airmon-ng check kill
+airmon-ng start wlan0
+iwconfig
+
+[+]You can see the monitor mode is enabled 
+
+sudo ifconfig wlan0 up
+iwconfig                             
+sudo aireplay-ng --test wlan0
+
+[+] Here You can see the Packet Injection is working ..... Enjoy :)
+
+[+] Thanks for Reading
