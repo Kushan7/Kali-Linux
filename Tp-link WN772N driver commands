@@ -13,7 +13,7 @@ apt-cache search linux-headers
 
 apt-get install linux-headers-5.10.0-kali9-amd64
 sudo reboot
-
+sudo apt install bc
 sudo apt-get install build-essential 
 sudo apt-get install libelf-dev 
 sudo reboot
